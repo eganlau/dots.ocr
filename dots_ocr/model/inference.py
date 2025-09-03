@@ -2,11 +2,18 @@ import json
 import io
 import base64
 import math
+import os
+import sys
+sys.path.append(".")
+sys.path.append("..")
+
+from dotenv import load_dotenv
+load_dotenv() 
+
 from PIL import Image
 import requests
 from dots_ocr.utils.image_utils import PILimage_to_base64
 from openai import OpenAI
-import os
 
 
 def inference_with_vllm(
@@ -20,7 +27,7 @@ def inference_with_vllm(
         model_name='model',
         ):
     
-    addr = f"http://{ip}:{port}/v1"
+    addr = os.getenv("DOTS_OCR_INFERENCE_SERVER")
     client = OpenAI(api_key="{}".format(os.environ.get("API_KEY", "0")), base_url=addr)
     messages = []
     messages.append(

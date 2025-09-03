@@ -1,11 +1,17 @@
 import argparse
 import os
+import sys
+sys.path.append(".")
+sys.path.append("..")
+
+from dotenv import load_dotenv
+load_dotenv() 
 
 from openai import OpenAI
-from transformers.utils.versions import require_version
 from PIL import Image
 import io
 import base64
+
 from dots_ocr.utils import dict_promptmode_to_prompt
 from dots_ocr.model.inference import inference_with_vllm
 
@@ -17,8 +23,6 @@ parser.add_argument("--model_name", type=str, default="model")
 parser.add_argument("--prompt_mode", type=str, default="prompt_layout_all_en")
 
 args = parser.parse_args()
-
-require_version("openai>=1.5.0", "To fix: pip install openai>=1.5.0")
 
 
 def main():
