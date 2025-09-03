@@ -34,7 +34,7 @@ services:
         # ensuring logs are properly forwarded to Docker's standard output.
         exec vllm serve /workspace/weights/DotsOCR \
             --tensor-parallel-size 1 \
-            --gpu-memory-utilization 0.5 \
+            --gpu-memory-utilization 0.6 \
             --chat-template-content-format string \
             --served-model-name model \
             --trust-remote-code
