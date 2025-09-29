@@ -9,6 +9,7 @@ services:
     volumes:
       #download model to local，model url：https://www.modelscope.cn/models/rednote-hilab/dots.ocr
       - ../weights/DotsOCR:/workspace/weights/DotsOCR
+      - /dev/imles/dev/imles_cloud/imles-ocr/data/static/:/static/
     environment:
       - PYTHONPATH=/workspace/weights:$PYTHONPATH
     deploy:
